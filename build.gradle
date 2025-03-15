@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'snw.utils'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+def lombok = "org.projectlombok:lombok:1.18.32"
+dependencies {
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    implementation 'com.google.guava:guava:33.4.0-jre'
+    // https://mvnrepository.com/artifact/it.unimi.dsi/fastutil
+    implementation 'it.unimi.dsi:fastutil:8.5.15'
+
+    compileOnly "org.jetbrains:annotations:24.1.0"
+
+    compileOnly lombok
+    annotationProcessor lombok
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
