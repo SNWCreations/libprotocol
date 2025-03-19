@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'java-library'
 }
 
 group = 'snw.utils'
@@ -12,9 +13,9 @@ repositories {
 def lombok = "org.projectlombok:lombok:1.18.32"
 dependencies {
     // https://mvnrepository.com/artifact/com.google.guava/guava
-    implementation 'com.google.guava:guava:33.4.0-jre'
+    api 'com.google.guava:guava:33.4.0-jre'
     // https://mvnrepository.com/artifact/it.unimi.dsi/fastutil
-    implementation 'it.unimi.dsi:fastutil:8.5.15'
+    api 'it.unimi.dsi:fastutil:8.5.15'
 
     compileOnly "org.jetbrains:annotations:24.1.0"
 
