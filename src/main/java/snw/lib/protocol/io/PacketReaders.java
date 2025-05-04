@@ -1,8 +1,12 @@
 package snw.lib.protocol.io;
 
 import org.jetbrains.annotations.Nullable;
+import snw.lib.protocol.util.PacketHelper;
 
+import java.util.Optional;
 import java.util.UUID;
+
+import static snw.lib.protocol.util.PacketHelper.readNullable;
 
 /**
  * The utility class which provides some {@link PacketReader}s.
@@ -43,6 +47,19 @@ public final class PacketReaders {
             }
             return clazz.getEnumConstants()[ordinal];
         };
+    }
+
+    /**
+     * Create a {@link PacketReader} which could be used to read {@link Optional}-wrapped {@link E}. <br>
+     * This is a {@link PacketReader}-based wrapper of {@link PacketHelper#readNullable}.
+     *
+     * @param reader The reader which is used to read actual value
+     * @return The requested {@link PacketReader}
+     * @param <E> The type of actual value being read
+     * @since 1.1.0
+     */
+    public static <E> PacketReader<Optional<E>> optionalReader(PacketReader<E> reader) {
+        return input -> Optional.ofNullable(readNullable(input, reader));
     }
 
     private PacketReaders() {
